@@ -27,8 +27,16 @@ class locationController extends Controller
             $datas = Location::where('location','!=','')->orderBy('id','DESC')->paginate(20);
            
         }
-
-        return Response::json($datas->toArray());
+        //return $datas;
+        $data= $datas->toArray()['data'];
+        return array('data' => $data,'pagination' => array(
+        'total'        => $datas->total(),
+        'per_page'     => $datas->perPage(),
+        'current_page' => $datas->currentPage(),
+        'last_page'    => $datas->lastPage(),
+        'from'         => $datas->firstItem(),
+        'to'           => $datas->lastItem()
+    ));
 
     }
     public function index(Request $request)
