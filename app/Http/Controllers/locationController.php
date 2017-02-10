@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Location;
+use Illuminate\Support\Facades\Response;
 class locationController extends Controller
 {
     /**
@@ -11,6 +12,25 @@ class locationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function ApiLocationList(Request $request){
+
+        $query = $request->get('q');
+       
+        if ($query!='')
+        {
+            
+             $datas = Location::search($query)->orderBy('id','DESC')->paginate(20);
+           
+        }
+        else
+        {
+            $datas = Location::where('location','!=','')->orderBy('id','DESC')->paginate(20);
+           
+        }
+
+        return Response::json($datas->toArray());
+
+    }
     public function index(Request $request)
     {
         //
