@@ -29,14 +29,14 @@ class locationController extends Controller
         }
         //return $datas;
         $data= $datas->toArray()['data'];
-        return array('data' => $data,'pagination' => array(
+        return json_encode(array('data' => $data,'pagination' => array(
         'total'        => $datas->total(),
         'per_page'     => $datas->perPage(),
         'current_page' => $datas->currentPage(),
         'last_page'    => $datas->lastPage(),
         'from'         => $datas->firstItem(),
         'to'           => $datas->lastItem()
-    ));
+    )));
 
     }
     public function index(Request $request)
