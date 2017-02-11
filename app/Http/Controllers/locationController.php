@@ -24,7 +24,7 @@ class locationController extends Controller
         }
         else
         {
-            $datas = Location::where('location','!=','')->orderBy('id','DESC')->paginate(20);
+            $datas = Location::select('id','location')->where('location','!=','')->orderBy('id','DESC')->paginate(20);
            
         }
         //return $datas;
