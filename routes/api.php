@@ -20,3 +20,4 @@ Route::get('/user', function (Request $request) {
 Route::get('/locationlist','locationController@ApiLocationList');
 
 Route::get('/Vendorlist','VendorController@ApiVendorList');
+Route::get('/vendor','VendorController@APIVendorInner');

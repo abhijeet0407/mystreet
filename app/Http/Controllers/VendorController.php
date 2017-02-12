@@ -45,6 +45,25 @@ class VendorController extends Controller
     ))));
 
     }
+
+    public function ApiVendorInner(Request $request){
+
+        $query = $request->get('vendor');
+        
+       
+        if ($query!='')
+        {
+            
+          return  $datas = Vendor::where('id','=',$query)->with('location')->with('locations')->with('cuisines')->with('menus')->orderBy('id','DESC')->get();
+           
+        }
+        
+
+    }
+
+
+
+
     public function index(Request $request)
     {
         //
