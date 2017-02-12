@@ -12,7 +12,7 @@
                 <!-- cards containers -->
                 <div class="card">
                   <div class="card-header">  
-                    <h2>Create Vendor</h2>
+                    <h2>Vendor</h2>
                     <small class="text-danger">Fields marked in * are required</small>
                   </div>
                   <?php if(!isset($vendor)){ ?>

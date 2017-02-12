@@ -18,3 +18,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 Route::get('/locationlist','locationController@ApiLocationList');
+
+Route::get('/Vendorlist','VendorController@ApiVendorList');

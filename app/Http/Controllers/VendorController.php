@@ -15,6 +15,36 @@ class VendorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function ApiVendorList(Request $request){
+
+        $query = $request->get('q');
+        $query2 = $request->get('location');
+       
+        if ($query!='')
+        {
+            
+            $datas = Vendor::search($query)->with('location')->with('locations')->orderBy('id','DESC')->paginate(20);
+           
+        }elseif ($query2!='') {
+           $datas = Vendor::with('location')->with('locations')->where('location_id','=',$query2)->orderBy('id','DESC')->paginate(20);
+        }
+        else
+        {
+            $datas = Vendor::with('location')->with('locations')->orderBy('id','DESC')->paginate(20);
+           
+        }
+        //return $datas;
+        $data= $datas->toArray()['data'];
+        return json_encode(array(array('data' => $data,'pagination' => array(
+        'total'        => $datas->total(),
+        'per_page'     => $datas->perPage(),
+        'current_page' => $datas->currentPage(),
+        'last_page'    => $datas->lastPage(),
+        'from'         => $datas->firstItem(),
+        'to'           => $datas->lastItem()
+    ))));
+
+    }
     public function index(Request $request)
     {
         //
@@ -29,7 +59,7 @@ class VendorController extends Controller
         }
         else
         {
-           return $datas = Vendor::with('location')->with('locations')->orderBy('id','DESC')->paginate(20);
+            $datas = Vendor::with('location')->with('locations')->orderBy('id','DESC')->paginate(20);
            
         }
        
