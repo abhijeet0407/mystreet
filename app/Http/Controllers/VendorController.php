@@ -8,6 +8,7 @@ use App\Location;
 use App\User;
 use App\Vendor;
 use Illuminate\Support\Facades\Validator;
+
 class VendorController extends Controller
 {
     /**
