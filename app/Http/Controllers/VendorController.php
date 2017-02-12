@@ -30,7 +30,7 @@ class VendorController extends Controller
         }
         else
         {
-            $datas = Vendor::with('location')->with('locations')->orderBy('id','DESC')->paginate(20);
+            $datas = Vendor::with('location')->with('locations')->with('cuisines')->orderBy('id','DESC')->paginate(20);
            
         }
         //return $datas;

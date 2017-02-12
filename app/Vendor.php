@@ -12,11 +12,11 @@ class Vendor extends Model
      use SearchableTrait;
 
     public function cuisines(){
-    	return $this->belongsToMany('App\Cuisine')->withTimestamps();
+    	return $this->belongsToMany('App\Cuisine');
     }
 
     public function locations(){
-    	return $this->belongsToMany('App\Location')->withTimestamps();
+    	return $this->belongsToMany('App\Location');
     }
 
     public function location(){
