@@ -21,4 +21,4 @@ Route::get('/locationlist','locationController@ApiLocationList');
 
 Route::get('/Vendorlist','VendorController@ApiVendorList');
 Route::get('/vendor','VendorController@APIVendorInner');
-Route::post('/customer','CustomerLoginController@authenticate');
+Route::post('/customer','CustomerLoginController@CustomerAuth');

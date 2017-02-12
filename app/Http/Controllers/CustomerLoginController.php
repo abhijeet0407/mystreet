@@ -8,15 +8,17 @@ use Illuminate\Support\Facades\Auth;
 class CustomerLoginController extends Controller
 {
     //
-    public function authenticate(Request $request)
-    {
-    	$email = $request->post('email');
-        $password = $request->post('password');
+    public function CustomerAuth(Request $request)
+    {	
+    	$email = $request['email'];
+    	$password = $request['password'];
+    	
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             // Authentication passed...
             return "success";
         }else{
         	return $email;
         }
+        
     }
 }
