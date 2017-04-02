@@ -19,12 +19,12 @@ class locationController extends Controller
         if ($query!='')
         {
             
-             $datas = Location::search($query)->orderBy('id','DESC')->paginate(20);
+             $datas = Location::search($query)->orderBy('id','DESC')->get();
            
         }
         else
         {
-            $datas = Location::select('id','location')->where('location','!=','')->orderBy('id','DESC')->paginate(20);
+            $datas = Location::select('id','location')->where('location','!=','')->orderBy('id','DESC')->get();
            
         }
         //return $datas;

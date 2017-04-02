@@ -20,7 +20,7 @@ class CustomerLoginController extends Controller
             
             return "success";
         }else{
-        	return $email;
+        	return "error";
         }
         
     }
@@ -46,7 +46,7 @@ class CustomerLoginController extends Controller
 
 
         if ($validator->fails()) {
-            return $validator;
+            return implode(', ',$validator->errors()->all());
         }
 
         $Customer= User::create([
