@@ -19,7 +19,7 @@ class locationController extends Controller
         if ($query!='')
         {
             
-             $datas = Location::search($query)->orderBy('id','DESC')->paginate(200);
+             $datas = Location::select('id','location')->where('location','like','%'.$queryq.'%')->orderBy('id','DESC')->paginate(200);
            
         }
         else
