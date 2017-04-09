@@ -25,6 +25,11 @@ class CustomerLoginController extends Controller
         
     }
 
+    public function CartProcess(Request $request){
+        $cartdata=$request['cartdata'];
+        print_r(json_decode($cartdata));
+    }
+
     public function CustomerRegister(Request $request)
     {
     	$email=$request['email'];
