@@ -167,9 +167,10 @@ foreach($cart as $k=>$arr){
 
 //echo $message;
 $to='aditya.kadam28@gmail.com';
+$to2=$cartuser['email'];
 $subject = "New order received - Chabaza";
 
-$subject = "Thankyou for ordering - Chabaza";
+$subject2 = "Thankyou for ordering - Chabaza";
 // Always set content-type when sending HTML email
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
