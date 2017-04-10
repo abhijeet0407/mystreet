@@ -131,13 +131,7 @@ foreach($cart as $k=>$arr){
           </tr>";
         }
 
-        if($k=="menu_price")
-        {
-            $message.=" <tr>
-            <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Menu Price</th>
-            <td style=\"text-align:left;padding-left:10px;\">".$arr."</td>
-          </tr>";
-        }
+        
 
         if($k=="menu_qty")
         {
