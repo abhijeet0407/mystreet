@@ -166,8 +166,10 @@ foreach($cart as $k=>$arr){
 ";
 
 //echo $message;
-$to='khairnar.abhi@gmail.com';
+$to='aditya.kadam28@gmail.com';
 $subject = "New order received - Chabaza";
+
+$subject = "Thankyou for ordering - Chabaza";
 // Always set content-type when sending HTML email
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
@@ -177,6 +179,8 @@ $headers .= 'From: <noreply@digitaldecode.us>' . "\r\n";
 
 
 mail($to,$subject,$message,$headers);
+
+mail($to2,$subject2,$message,$headers);
        
         /*$user=$myarray[1];
         foreach($cart as $arr){
