@@ -6,7 +6,7 @@
         <!-- CSRF Token -->
     <meta name="csrf-token" content="<?php echo csrf_token() ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-       <title><?php echo config('app.name', 'DHL') ?></title>
+       <title><?php echo config('app.name', 'CHABAZA') ?></title>
 
         <!-- Vendor CSS -->
         <link href="<?php echo env('APP_URL22'); ?>/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">

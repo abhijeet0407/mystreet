@@ -830,6 +830,30 @@ $(document).ready(function(){
                    } 
 
 
+                   $('body').on('click','.delete_image',function(){
+                        var img = $(this);
+
+                        swal({
+                            title: "Are you sure?",
+                            text: "You will not be able to recover this image!",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Yes, delete it!",
+                            closeOnConfirm: false
+                        }, function(){
+                            img.parent().find('.image_val').val('');
+                            img.parent().hide();
+                            swal("Deleted!", "Image has been deleted.", "success");
+                        });
+
+
+
+                       
+
+
+                   }) 
+
                     
             
 

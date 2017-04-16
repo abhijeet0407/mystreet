@@ -14627,3 +14627,7 @@ select.chosen {
 -moz-box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.75);
 box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.75); }
 
+.delete_image{ position: absolute !important; top:5px; right: 23px; }
+
+.image_container img{ max-width: 100%; }
+

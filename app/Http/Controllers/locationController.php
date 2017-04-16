@@ -88,7 +88,7 @@ class locationController extends Controller
         $request->file('location_image')->storeAs('public/locations/',$file_name);
         $location=new Location;
         $location->location=$request['location'];
-       $location->location_image=$file_name;
+        $location->location_image=$file_name;
         $location->save();
         return redirect('location');
     }
@@ -126,7 +126,22 @@ class locationController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
+
+
+
         $location = Location::find($id);
+
+        if($request->file('location_image')!== null){
+
+        $ext=$request->file('location_image')->guessClientExtension();
+        $file_name=rand(1111,9999).'location.'.$ext;
+        $request->file('location_image')->storeAs('public/locations/',$file_name);
+        $location->location_image=$file_name;
+        }else{
+            $location->location_image=$request['prev_location_image'];
+        }
 
         $location->location = $request['location'];
 
