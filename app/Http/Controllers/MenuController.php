@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Vendor;
 use App\Menu;
+use App\MenuFilter;
 use Illuminate\Support\Facades\Validator;
 class MenuController extends Controller
 {
@@ -45,7 +46,8 @@ class MenuController extends Controller
     {
         //
         $vendor=Vendor::orderBy('name')->get();
-        return view('menu.form',compact('vendor'));
+        $menufilter=MenuFilter::get();
+        return view('menu.form',compact('vendor','menufilter'));
     }
 
     /**
@@ -70,16 +72,26 @@ class MenuController extends Controller
                         ->withErrors($validator)
                         ->withInput();
         }
-
-
+        $file_name='';
+        if($request->file('image')!==null){
+        $ext=$request->file('image')->guessClientExtension();
+        $file_name=rand(1111,9999).'menu.'.$ext;
+        $request->file('image')->storeAs('public/menu/',$file_name);
+        }
         $Menu= Menu::create([
             'vendor_id' => $request['vendor'],
             'menu' => $request['menu'],
             'price' => $request['price'],
+            'image' => $file_name,
+            'description' => $request['description'],
             'menu_type' => $request['menu_type']
         ]);
-
+         $MenuInsertId = $Menu->id;
         if(isset($Menu)){
+            $Menu_Object = Menu::find($MenuInsertId);
+
+            $menu_menufilter=$request['menu_menufilter'];
+            $Menu_Object->menufilter()->sync($menu_menufilter);
             return redirect('menu');
         }else{
             return back()->withInput();
@@ -96,6 +108,7 @@ class MenuController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -107,6 +120,11 @@ class MenuController extends Controller
     public function edit($id)
     {
         //
+        $menu=Menu::where('id','=',$id)->first();
+          $vendor=Vendor::get();
+        $menufilter=MenuFilter::get();
+        //print_r($menu);
+        return view('menu.form',compact('menu','menufilter','vendor'));
     }
 
     /**
@@ -119,6 +137,50 @@ class MenuController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $validator = Validator::make($request->all(), [
+             'menu' => 'required|max:255',
+            'price' => 'required'
+           
+        ],[
+    'price.digits' => 'Numbers only',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('menu/'.$id.'/edit')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        $Menu=Menu::find($id);
+        print_r($request->file('image'));
+        if($request->file('image')!== null){
+
+        $ext=$request->file('image')->guessClientExtension();
+        $file_name=rand(1111,9999).'menu.'.$ext;
+        $request->file('image')->storeAs('public/menu/',$file_name);
+        $Menu->image=$file_name;
+        }else{
+            $Menu->image=$request['prev_image'];
+        }
+
+        
+        $Menu->vendor_id = $request['vendor'];
+        $Menu->menu = $request['menu'];
+        $Menu->price = $request['price'];
+        $Menu->description = $request['description'];
+        $Menu->menu_type = $request['menu_type'];
+        $Menu->save();
+        if(isset($Menu)){
+            $Menu_Object = Menu::find($id);
+
+            $menu_menufilter=$request['menu_menufilter'];
+            $Menu_Object->menufilter()->sync($menu_menufilter);
+            return redirect('menu');
+        }else{
+            return redirect('menu/'.$id.'/edit');
+        }
+
     }
 
     /**
@@ -130,5 +192,9 @@ class MenuController extends Controller
     public function destroy($id)
     {
         //
+
+        $Menu = Menu::find($id);
+        $Menu->delete();
+        return 'deleted';
     }
 }

@@ -21,3 +21,5 @@ Route::resource('location', 'locationController');
 Route::resource('cuisine', 'CuisineController');
 Route::resource('vendor', 'VendorController');
 Route::resource('menu', 'MenuController');
+Route::resource('menufilter', 'MenuFilterController');
+

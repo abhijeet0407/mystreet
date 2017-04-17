@@ -83,9 +83,12 @@ class locationController extends Controller
     public function store(Request $request)
     {
         //
+        $file_name='';
+        if($request->file('location_image')!==null){
         $ext=$request->file('location_image')->guessClientExtension();
         $file_name=rand(1111,9999).'location.'.$ext;
         $request->file('location_image')->storeAs('public/locations/',$file_name);
+         }
         $location=new Location;
         $location->location=$request['location'];
         $location->location_image=$file_name;

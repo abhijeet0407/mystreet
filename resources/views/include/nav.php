@@ -30,6 +30,8 @@
                     </li>
 
 
+
+
                     <li class="sub-menu">
                         <a href="javascript:void(0)" data-ma-action="submenu-toggle"><i class="zmdi zmdi-local-dining"></i>Manage Cuisines</a>
 
@@ -45,6 +47,15 @@
                         <ul>
                             <li><a href="<?php echo url('/vendor') ?>">Vendors</a></li>
                             <li><a href="<?php echo url('/vendor/create') ?>">Add Vendor </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:void(0)" data-ma-action="submenu-toggle"><i class="zmdi zmdi-local-dining"></i>Manage Menu Filter</a>
+
+                        <ul>
+                            <li><a href="<?php echo url('/menufilter') ?>">Menu Filter</a></li>
+                            <li><a href="<?php echo url('/menufilter/create') ?>">Add Menu Filter </a></li>
                         </ul>
                     </li>
 

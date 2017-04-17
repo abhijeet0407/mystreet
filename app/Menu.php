@@ -43,4 +43,9 @@ class Menu extends Model
     {
         return $this->hasMany('vendors');
     }
+
+    public function menufilter()
+    {
+        return $this->belongsToMany('App\MenuFilter','menu_menufilter','menu_id','menufilter_id');
+    }
 }

@@ -230,7 +230,7 @@ class VendorController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return redirect('vendor/id/edit')
+                return redirect('vendor/'.$id.'/edit')
                             ->withErrors($validator)
                             ->withInput();
             }
