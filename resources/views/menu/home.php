@@ -42,7 +42,7 @@
                                 </li>
 
                               	<li>
-                                      <a class="alt_menu  <?php echo $bgcolor; ?>" data-table="" data-toggle="tooltip"  data-placement="bottom" title="" data-original-title="Add" href="<?php echo $module.'/create'; ?>"><i class="zmdi zmdi-plus-circle"></i></a>
+                                      <a class="alt_menu  <?php echo $bgcolor; ?>" data-table="" data-toggle="tooltip"  data-placement="bottom" title="" data-original-title="Add" href="<?php echo url($module.'/create'); ?>"><i class="zmdi zmdi-plus-circle"></i></a>
                                 </li>
                                 
                                 <li>
@@ -80,7 +80,7 @@
                                 <div class="pull-right">
                                     
                                        		<a rel="<?php echo $data->id; ?>" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View" href="javascript:void(0)" class="btn view_cart btn-xs palette-Orange btn-icon bg waves-effect waves-circle waves-float m-r-10"><i class="zmdi zmdi-eye"></i></a>
-                                            <a data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit" href="/<?php echo $module.'/'.$data->id.'/'.'edit' ?>" class="btn btn-xs palette-Cyan btn-icon bg waves-effect waves-circle waves-float"><i class="zmdi zmdi-edit"></i></a>
+                                            <a data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit" href="/<?php echo url($module.'/'.$data->id.'/'.'edit'); ?>" class="btn btn-xs palette-Cyan btn-icon bg waves-effect waves-circle waves-float"><i class="zmdi zmdi-edit"></i></a>
                                             <a href="javascript:void(0)" rel="<?php echo $data->id; ?>" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Remove" data-table="" data-token="<?php echo csrf_token();  ?>" class="btn singleDelete btn-xs btn-danger m-l-10 btn-icon waves-effect waves-circle waves-float"><i class="zmdi zmdi-delete"></i></a>
 
                                             
