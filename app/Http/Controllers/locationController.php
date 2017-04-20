@@ -29,13 +29,15 @@ class locationController extends Controller
         }
         //return $datas;
         $data= $datas->toArray()['data'];
+        //return $data;
         return json_encode(array(array('data' => $data,'pagination' => array(
         'total'        => $datas->total(),
         'per_page'     => $datas->perPage(),
         'current_page' => $datas->currentPage(),
         'last_page'    => $datas->lastPage(),
         'from'         => $datas->firstItem(),
-        'to'           => $datas->lastItem()
+        'to'           => $datas->lastItem(),
+        'absurl'       => "http://digitaldecode.us/mystreet/public/storage/locations/" 
     ))));
 
     }
