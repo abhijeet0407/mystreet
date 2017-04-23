@@ -14,6 +14,40 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
+    public function ApiMenuList(Request $request){
+
+        $query = $request->get('q');
+       
+        if ($query!='')
+        {
+            
+             $datas = Menu::select('id','menu','price','menu_type','description','image')->where('menu','like','%'.$query.'%')->orderBy('id','DESC')->paginate(200);
+           
+        }
+        else
+        {
+            $datas = Menu::select('id','menu','price','menu_type','description','image')->where('menu','!=','')->orderBy('id','DESC')->paginate(200);
+           
+        }
+        //return $datas;
+        $data= $datas->toArray()['data'];
+        //return $data;
+        return json_encode(array(array('data' => $data,'pagination' => array(
+        'total'        => $datas->total(),
+        'per_page'     => $datas->perPage(),
+        'current_page' => $datas->currentPage(),
+        'last_page'    => $datas->lastPage(),
+        'from'         => $datas->firstItem(),
+        'to'           => $datas->lastItem(),
+        'absurl'       => "http://digitaldecode.us/mystreet/public/storage/menus/" 
+    ))));
+
+    }
+
+
     public function index(Request $request)
     {
         //
@@ -76,7 +110,7 @@ class MenuController extends Controller
         if($request->file('image')!==null){
         $ext=$request->file('image')->guessClientExtension();
         $file_name=rand(1111,9999).'menu.'.$ext;
-        $request->file('image')->storeAs('public/menu/',$file_name);
+        $request->file('image')->storeAs('public/menus/',$file_name);
         }
         $Menu= Menu::create([
             'vendor_id' => $request['vendor'],
@@ -158,7 +192,7 @@ class MenuController extends Controller
 
         $ext=$request->file('image')->guessClientExtension();
         $file_name=rand(1111,9999).'menu.'.$ext;
-        $request->file('image')->storeAs('public/menu/',$file_name);
+        $request->file('image')->storeAs('public/menus/',$file_name);
         $Menu->image=$file_name;
         }else{
             $Menu->image=$request['prev_image'];
