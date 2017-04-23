@@ -125,7 +125,9 @@ class MenuController extends Controller
             $Menu_Object = Menu::find($MenuInsertId);
 
             $menu_menufilter=$request['menu_menufilter'];
-            $Menu_Object->menufilter()->sync($menu_menufilter);
+            if(isset($request['menu_menufilter'])){
+                 $Menu_Object->menufilter()->sync($menu_menufilter);
+            }
             return redirect('menu');
         }else{
             return back()->withInput();
@@ -209,7 +211,12 @@ class MenuController extends Controller
             $Menu_Object = Menu::find($id);
 
             $menu_menufilter=$request['menu_menufilter'];
-            $Menu_Object->menufilter()->sync($menu_menufilter);
+            if(isset($request['menu_menufilter'])){
+                 $Menu_Object->menufilter()->sync($menu_menufilter);
+            }else{
+                $Menu_Object->menufilter()->sync(array());
+            }
+           
             return redirect('menu');
         }else{
             return redirect('menu/'.$id.'/edit');
