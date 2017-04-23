@@ -24,12 +24,12 @@ class MenuController extends Controller
         if ($query!='')
         {
             
-             $datas = Menu::select('id','menu','price','menu_type','description','image')->where('menu','like','%'.$query.'%')->orderBy('id','DESC')->paginate(200);
+             $datas = Menu::select('id','menu','price','menu_type','image')->where('menu','like','%'.$query.'%')->orderBy('id','DESC')->paginate(200);
            
         }
         else
         {
-            $datas = Menu::select('id','menu','price','menu_type','description','image')->where('menu','!=','')->orderBy('id','DESC')->paginate(200);
+            $datas = Menu::select('id','menu','price','menu_type','image')->where('menu','!=','')->orderBy('id','DESC')->paginate(200);
            
         }
         //return $datas;
