@@ -187,7 +187,7 @@ class MenuController extends Controller
         }
 
         $Menu=Menu::find($id);
-        print_r($request->file('image'));
+       // print_r($request->file('image'));
         if($request->file('image')!== null){
 
         $ext=$request->file('image')->guessClientExtension();
