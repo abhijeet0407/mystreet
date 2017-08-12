@@ -14,7 +14,7 @@ class Menu extends Model
 
 
      protected $fillable = [
-        'menu', 'price', 'vendor_id','menu_type'
+        'menu', 'price', 'vendor_id','menu_type', 'description'
     ];
 
 
