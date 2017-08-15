@@ -35,6 +35,23 @@ class CuisineController extends Controller
         return view('cuisine.home',compact('datas'));
     }
 
+    public function ApiCuisineList(){
+         $datas = Cuisine::select('id','cuisine')->where('cuisine','!=','')->orderBy('cuisine','ASC')->paginate(200);
+    
+    $data= $datas->toArray()['data'];
+        //return $data;
+        return json_encode(array(array('data' => $data,'pagination' => array(
+        'total'        => $datas->total(),
+        'per_page'     => $datas->perPage(),
+        'current_page' => $datas->currentPage(),
+        'last_page'    => $datas->lastPage(),
+        'from'         => $datas->firstItem(),
+        'to'           => $datas->lastItem(),
+        'absurl'       => "http://digitaldecode.us/mystreet/public/storage/menus/" 
+    ))));     
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
