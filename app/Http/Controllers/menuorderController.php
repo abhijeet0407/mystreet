@@ -86,7 +86,7 @@ class menuorderController extends Controller
     public function storeOrder(Request $request)
     {
 
-        $Customer= Menuorder::create([
+        /*$Customer= Menuorder::create([
             'menu_item' => $request['menu_item'],
             'menu_name' => $request['menu_name'],
             'menu_qty' => $request['menu_qty'],
@@ -99,7 +99,9 @@ class menuorderController extends Controller
             'order_price' => $request['order_price'],
             'customerId' => $request['customerId'],
             
-        ]);
+        ]);*/
+
+        return $request['orderdata'];
 
     }
 
