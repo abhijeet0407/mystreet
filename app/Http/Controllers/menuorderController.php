@@ -85,6 +85,24 @@ class menuorderController extends Controller
 
     public function storeOrder(Request $request)
     {
+         $orderdata = json_decode($request['orderdata']);
+
+         foreach ($orderdata as $order) {
+            $Customer= Menuorder::create([
+            'menu_item' => $order->menu_item,
+            'menu_name' => $order->menu_name,
+            'menu_qty' => $order->menu_qty,
+            'menu_type' => $order->menu_type,
+            'menu_plan' => $order->menu_plan,
+            'menu_startdate' => $order->menu_startdate,
+            'menu_deliverytime' => $order->menu_deliverytime,
+            'menu_days' => $order->menu_days,
+            'menu_price' => $order->menu_price,
+            'order_price' => $order->order_price,
+            'customerId' => $order->customerId,
+            
+        ]);
+        }
 
         /*$Customer= Menuorder::create([
             'menu_item' => $request['menu_item'],
@@ -101,7 +119,7 @@ class menuorderController extends Controller
             
         ]);*/
 
-        return $request['orderdata'];
+        return $orderdata;
 
     }
 
