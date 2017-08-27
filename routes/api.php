@@ -25,4 +25,4 @@ Route::get('/vendor','VendorController@APIVendorInner');
 Route::post('/customer','CustomerLoginController@CustomerAuth');
 Route::post('/register','CustomerLoginController@CustomerRegister');  
 Route::get('/cartprocess','CustomerLoginController@CartProcess');
-Route::get('/storeOrder','menuorderController@storeOrder');
+Route::post('/storeOrder','menuorderController@storeOrder');
