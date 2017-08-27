@@ -245,7 +245,7 @@ mail($to2,$subject2,$message,$headers);
         }
             
         if(isset($Customer_attr)){
-            return 'success';
+            return $CustomerInsertId;
         }else{
             return 'error';
         }
