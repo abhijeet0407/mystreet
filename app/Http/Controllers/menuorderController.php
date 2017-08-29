@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Menuorder;
+use App\Vendor;
+use App\Customer;
+use App\Menu;
 class menuorderController extends Controller
 {
     /**
@@ -14,6 +17,26 @@ class menuorderController extends Controller
     public function index()
     {
         //
+        $query = $request->get('q');
+       
+        if ($query!='')
+        {
+            
+             $datas = Menuorder::search($query)->orderBy('id','DESC')->paginate(20);
+           
+        }
+        else
+        {
+            $datas = Menuorder::where('menufilter','!=','')->orderBy('id','DESC')->paginate(20);
+           
+        }
+       
+       $vendor=Vendor::get();
+       $customer=Customer::get();
+       $menu=Menu::get();
+      
+
+        return view('menuorder.home',compact('datas','vendor','customer','menu'));
     }
 
     /**

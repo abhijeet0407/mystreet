@@ -79,6 +79,16 @@
                     </li>
 
 
+                    <li class="sub-menu">
+                        <a href="javascript:void(0)" data-ma-action="submenu-toggle"><i class="zmdi zmdi-account"></i>Manage Orders</a>
+
+                        <ul>
+                            <li><a href="<?php echo url('/menuorder') ?>">Orders</a></li>
+                           
+                        </ul>
+                    </li>
+
+
                    
                     
                     

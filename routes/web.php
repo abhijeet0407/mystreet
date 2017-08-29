@@ -22,4 +22,5 @@ Route::resource('cuisine', 'CuisineController');
 Route::resource('vendor', 'VendorController');
 Route::resource('menu', 'MenuController');
 Route::resource('menufilter', 'MenuFilterController');
+Route::resource('menuorder', 'menuorderController');
 
