@@ -27,7 +27,7 @@ class menuorderController extends Controller
         }
         else
         {
-            $datas = Menuorder::where('menufilter','!=','')->orderBy('id','DESC')->paginate(20);
+            $datas = Menuorder::where('menu_item','!=','')->orderBy('id','DESC')->paginate(20);
            
         }
        
