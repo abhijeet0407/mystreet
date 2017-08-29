@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Menuorder;
 use App\Vendor;
 use App\Customer;
+use App\User;
 use App\Menu;
 class menuorderController extends Controller
 {
@@ -33,10 +34,11 @@ class menuorderController extends Controller
        
        $vendor=Vendor::get();
        $customer=Customer::get();
+       $user=User::get();
        $menu=Menu::get();
       
 
-        return view('orders.home',compact('datas','vendor','customer','menu'));
+        return view('orders.home',compact('datas','vendor','customer','menu','user'));
     }
 
     /**

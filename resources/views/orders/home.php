@@ -112,7 +112,7 @@
                                             
                                         </li>
 
-                                        <li><?php echo $data->customerId." aaa "; print_r($customer); $desired=$customer->find($data->customerId); echo $desired['name']."( ".$desired['phone'].") "; ?></li>
+                                        <li><?php  $desired=$user->find($data->customerId); echo $desired['name']."( ".$desired['phone'].") "; ?></li>
 
                                         
                                     </ul> 
