@@ -36,7 +36,7 @@ class menuorderController extends Controller
        $menu=Menu::get();
       
 
-        return view('menuorder.home',compact('datas','vendor','customer','menu'));
+        return view('orders.home',compact('datas','vendor','customer','menu'));
     }
 
     /**
