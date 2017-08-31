@@ -19,12 +19,12 @@ class MenuController extends Controller
 
     public function ApiMenuList(Request $request){
 
-        $query = $request->get('q');
+        $query = $request->get('cuisine');
        
         if ($query!='')
         {
             
-             $datas = Menu::select('id','menu','price','menu_type','image')->where('menu','like','%'.$query.'%')->orderBy('id','DESC')->paginate(200);
+             $datas = Menu::select('id','menu','price','menu_type','image')->where('id','=',$query)->orderBy('id','DESC')->paginate(200);
            
         }
         else
