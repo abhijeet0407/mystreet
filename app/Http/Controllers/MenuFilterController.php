@@ -11,6 +11,39 @@ class MenuFilterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function ApiFilterList(Request $request){
+
+        $query = $request->get('cuisine');
+       
+        if ($query!='')
+        {
+            
+                $datas = MenuFilter::select('id','menufilter')->where('menufilter','!=','')->orderBy('menufilter','ASC')->paginate(200);
+             //$datas = Menu::select('id','menu','price','menu_type','image')->where('id','=',$query)->orderBy('id','DESC')->paginate(200);
+           
+        }
+        else
+        {
+            $datas = MenuFilter::select('id','menufilter')->where('menufilter','!=','')->orderBy('menufilter','ASC')->paginate(200);
+           
+        }
+        //return $datas;
+        $data= $datas->toArray()['data'];
+        //return $data;
+        return json_encode(array(array('data' => $data,'pagination' => array(
+        'total'        => $datas->total(),
+        'per_page'     => $datas->perPage(),
+        'current_page' => $datas->currentPage(),
+        'last_page'    => $datas->lastPage(),
+        'from'         => $datas->firstItem(),
+        'to'           => $datas->lastItem(),
+        'absurl'       => "http://digitaldecode.us/mystreet/public/storage/menus/" 
+    ))));
+
+    }
+
+
     public function index(Request $request)
     {
         //
