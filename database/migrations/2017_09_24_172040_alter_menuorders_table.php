@@ -15,7 +15,7 @@ class AlterMenuordersTable extends Migration
     {
         Schema::table('menuorders', function (Blueprint $table) {
             //
-            $table->integer('order_no')->unsigned();
+            $table->string('order_no');
         });
     }
 
