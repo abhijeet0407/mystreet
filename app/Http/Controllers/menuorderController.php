@@ -125,6 +125,7 @@ class menuorderController extends Controller
             'menu_price' => $order->menu_price,
             'order_price' => $order->order_price,
             'customerId' => $order->customerId,
+            'order_no' => $order->order_no
             
         ]);
         }
