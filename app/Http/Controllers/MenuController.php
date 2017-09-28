@@ -42,7 +42,7 @@ class MenuController extends Controller
         'last_page'    => $datas->lastPage(),
         'from'         => $datas->firstItem(),
         'to'           => $datas->lastItem(),
-        'absurl'       => "http://digitaldecode.us/mystreet/public/storage/menus/" 
+        'absurl'       => "http://chabaza.com/app/public/storage/menus/" 
     ))));
 
     }
