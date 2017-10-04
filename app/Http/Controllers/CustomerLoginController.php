@@ -18,7 +18,7 @@ class CustomerLoginController extends Controller
     	
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             // Authentication passed...
-            
+            print_r($user = Auth::User());
             return "success";
         }else{
         	return "error";
