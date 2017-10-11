@@ -27,6 +27,36 @@ class CustomerLoginController extends Controller
         
     }
 
+    public function RsaProcess(Request $request){
+
+        $url = "https://secure.ccavenue.com/transaction/getRSAKey";
+        $fields = array(
+                'access_code'=>"AVFV72EG00BL93VFLB",
+                'order_id'=>$_POST['order_id']
+        );
+
+        $postvars='';
+        $sep='';
+        foreach($fields as $key=>$value)
+        {
+                $postvars.= $sep.urlencode($key).'='.urlencode($value);
+                $sep='&';
+        }
+
+        $ch = curl_init();
+
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch,CURLOPT_POST,count($fields));
+        curl_setopt($ch, CURLOPT_CAINFO, 'http://chabaza.com/app/public/cacert.pem');
+        curl_setopt($ch,CURLOPT_POSTFIELDS,$postvars);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $result = curl_exec($ch);
+
+        return $result;
+    }
+
     public function CartProcess(Request $request){
         //include_once(app_path() . '/textlocal.class.php');
       // Account details
