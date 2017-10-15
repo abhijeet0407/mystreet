@@ -35,7 +35,7 @@ class CustomerLoginController extends Controller
                 'order_id'=>'23'
                // 'order_id'=>$request['order_id']
         );
-        print_r($fields);
+       // print_r($fields);
 
         $postvars='';
         $sep='';
