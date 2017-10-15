@@ -31,8 +31,8 @@ class CustomerLoginController extends Controller
 
         $url = "https://secure.ccavenue.com/transaction/getRSAKey";
         $fields = array(
-                'access_code'=>"AVNI73EJ63AW87INWA",
-                'order_id'=>'22'
+                'access_code'=>"AVFV72EG00BL93VFLB",
+                'order_id'=>'23'
                // 'order_id'=>$request['order_id']
         );
         print_r($fields);
