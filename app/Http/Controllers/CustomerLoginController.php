@@ -29,7 +29,7 @@ class CustomerLoginController extends Controller
 
     public function RsaProcess(Request $request){
 
-        $url = "https://secure.ccavenue.com/transaction/getRSAKey";
+        $url = "https://test.ccavenue.com/transaction/getRSAKey";
         $fields = array(
                 'access_code'=>"AVFV72EG00BL93VFLB",
                 //'order_id'=>'23'
