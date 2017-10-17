@@ -320,7 +320,7 @@ mail($to2,$subject2,$message,$headers);
         return bin2hex($encryptedText);
     }
 
-    function decrypt($encryptedText,$key)
+    function decrypt22($encryptedText,$key)
     {
         $secretKey = hextobin(md5($key));
         $initVector = pack("C*", 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f);
@@ -378,7 +378,7 @@ mail($to2,$subject2,$message,$headers);
     function SuccessCart(Request $request){
         $workingKey='A33EC01955E79CC8261D05573806F75A';     //Working Key should be provided here.
     $encResponse=$request["encResp"];         //This is the response sent by the CCAvenue Server
-    $rcvdString=decrypt($encResponse,$workingKey);      //Crypto Decryption used as per the specified working key.
+    $rcvdString=decrypt22($encResponse,$workingKey);      //Crypto Decryption used as per the specified working key.
     $order_status="";
     $decryptValues=explode('&', $rcvdString);
     $dataSize=sizeof($decryptValues);
@@ -392,7 +392,7 @@ mail($to2,$subject2,$message,$headers);
 
     if($order_status==="Success")
     {
-        
+
         echo "<br>Thank you for shopping with us. Your credit card has been charged and your transaction is successful. We will be shipping your order to you soon.";
         
     }
