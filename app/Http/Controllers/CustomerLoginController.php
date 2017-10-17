@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Customer;
+use App\Menuorder;
 
 class CustomerLoginController extends Controller
 {
@@ -388,10 +389,20 @@ mail($to2,$subject2,$message,$headers);
     {
         $information=explode('=',$decryptValues[$i]);
         if($i==3)   $order_status=$information[1];
+        if($i==0)   $order_id=$information[1];
+        if($i==1)   $tracking_id=$information[1];
     }
+
+    Menuorder::where('order_no', '=', $order_id)
+        ->update([
+            'transaction_no' => $tracking_id,
+            'order_status' => $order_status 
+            
+        ]);
 
     if($order_status==="Success")
     {
+
 
         echo "<br>Thank you for shopping with us. Your credit card has been charged and your transaction is successful. We will be shipping your order to you soon.";
         
