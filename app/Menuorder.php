@@ -14,7 +14,7 @@ class Menuorder extends Model
 
 
      protected $fillable = [
-        'menu_item', 'menu_name', 'menu_qty','menu_type', 'menu_plan', 'menu_startdate','menu_deliverytime','menu_days','menu_price','order_price','customerId','order_no'
+        'menu_item', 'menu_name', 'menu_qty','menu_type', 'menu_plan', 'menu_startdate','menu_deliverytime','menu_days','menu_price','order_price','customerId','order_no','transaction_no','order_status'
     ];
 
 
