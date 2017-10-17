@@ -378,7 +378,7 @@ mail($to2,$subject2,$message,$headers);
     function SuccessCart(Request $request){
         $workingKey='A33EC01955E79CC8261D05573806F75A';     //Working Key should be provided here.
     $encResponse=$request["encResp"];         //This is the response sent by the CCAvenue Server
-    $rcvdString=decrypt22($encResponse,$workingKey);      //Crypto Decryption used as per the specified working key.
+    $rcvdString=$this->decrypt22($encResponse,$workingKey);      //Crypto Decryption used as per the specified working key.
     $order_status="";
     $decryptValues=explode('&', $rcvdString);
     $dataSize=sizeof($decryptValues);
