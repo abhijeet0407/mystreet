@@ -388,21 +388,20 @@ mail($to2,$subject2,$message,$headers);
 
         print_r($cart2);
         foreach($cart2 as $cart){
-            echo $cart->menu_plan;
+            //echo $cart->menu_plan;
            // echo $arr;
-            /*if($k=="menu_plan")
-            {
-                if($arr=='1'){
+            
+                if($cart->menu_plan=='1'){
                     $val="One day meal";
-                }else if($arr=='5'){
+                }else if($cart->menu_plan=='5'){
                     $val="One Week meal";
-                }else if($arr=='15'){
+                }else if($cart->menu_plan=='15'){
                     $val="Fifteen day meal";
-                }else if($arr=='30'){
+                }else if($cart->menu_plan=='30'){
                     $val="Thirty day meal";
                 }
                 echo $val;
-            }*/
+           
         }
         $to='khairnar.abhi@gmail.com';
         $subject='cart';
