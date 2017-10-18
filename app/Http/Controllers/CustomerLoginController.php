@@ -388,6 +388,7 @@ mail($to2,$subject2,$message,$headers);
 
         //print_r($cart);
         foreach($cart as $k=>$arr){
+            echo $k;
            // echo $arr;
             if($k=="menu_plan")
             {
