@@ -378,11 +378,10 @@ mail($to2,$subject2,$message,$headers);
     /**/
     function order_mailer(){
         $order_id='1710180216411041';
-        $cart_first=Menuorder::select('customerId')->where('order_no', '=', $order_id)->limit(1);
+        $cart_first=Menuorder::select('customerId')->where('order_no', '=', $order_id)->first();
 
         
-        $data= $cart_first->toArray()['data'];
-        print_r($data);
+        echo $cart_first->customerId;
     }
     function SuccessCart(Request $request){
         $workingKey='A33EC01955E79CC8261D05573806F75A';     //Working Key should be provided here.
