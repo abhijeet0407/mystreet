@@ -389,6 +389,17 @@ mail($to2,$subject2,$message,$headers);
         foreach($cart as $k=>$arr){
             echo $arr;
         }
+        $to='khairnar.abhi@gmail.com';
+        $subject='cart';
+        $message='cart body';
+        $headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// More headers
+$headers .= 'From: <noreply@chabaza.com>' . "\r\n";
+
+
+mail($to,$subject,$message,$headers);
 
     }
     function SuccessCart(Request $request){
@@ -414,9 +425,6 @@ mail($to2,$subject2,$message,$headers);
             'order_status' => $order_status 
             
         ]);
-
-        $cart=Menuorder::where('order_no', '=', $order_id);
-        $cart_first=Menuorder::select('customerId')->where('order_no', '=', $order_id)->limit(1);
 
     if($order_status==="Success")
     {
