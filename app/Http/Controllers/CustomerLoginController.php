@@ -562,7 +562,7 @@ echo mail($to,$subject,$message,$headers);
 
     <tr>
     <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Mobile</th>
-    <td style=\"text-align:left;padding-left:10px;\">".$user_details->mobile."</td>
+    <td style=\"text-align:left;padding-left:10px;\">".$user_details->phone."</td>
   </tr>
 
     <tr>
