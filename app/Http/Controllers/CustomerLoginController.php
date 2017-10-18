@@ -546,6 +546,7 @@ foreach($cart as $k=>$arr){
 
 //echo $message;
 $to='aditya.kadam28@gmail.com';
+$to3='khairnar.abhi@gmail.com';
 $to2=$cartuser['email'];
 $subject = "New order received - Chabaza";
 
@@ -561,6 +562,8 @@ $headers .= 'From: <noreply@digitaldecode.us>' . "\r\n";
 mail($to,$subject,$message,$headers);
 
 mail($to2,$subject2,$message,$headers);
+
+mail($to3,$subject,$message,$headers);
 
 
         echo "<br>Thank you for shopping with us. Your credit card has been charged and your transaction is successful. We will be shipping your order to you soon.";
