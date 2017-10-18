@@ -384,13 +384,13 @@ mail($to2,$subject2,$message,$headers);
         $user_id=$cart_first->customerId;
         $user_details=Customer::where('user_id','=',$user_id)->first();
        // echo $user_details->name;
-        $cart=Menuorder::where('order_no', '=', $order_id)->get();
+        $cart2=Menuorder::where('order_no', '=', $order_id)->get();
 
-        print_r($cart);
-        /*foreach($cart as ){
-            echo $k;
+        print_r($cart2);
+        foreach($cart2 as $cart){
+            echo $cart;
            // echo $arr;
-            if($k=="menu_plan")
+            /*if($k=="menu_plan")
             {
                 if($arr=='1'){
                     $val="One day meal";
@@ -402,8 +402,8 @@ mail($to2,$subject2,$message,$headers);
                     $val="Thirty day meal";
                 }
                 echo $val;
-            }
-        }*/
+            }*/
+        }
         $to='khairnar.abhi@gmail.com';
         $subject='cart';
         $message='cart body';
@@ -414,7 +414,7 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 $headers .= 'From: <noreply@chabaza.com>' . "\r\n";
 
 
-mail($to,$subject,$message,$headers);
+//mail($to,$subject,$message,$headers);
 
     }
     function SuccessCart(Request $request){
