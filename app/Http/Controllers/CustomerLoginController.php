@@ -384,10 +384,10 @@ mail($to2,$subject2,$message,$headers);
         $user_id=$cart_first->customerId;
         $user_details=Customer::where('user_id','=',$user_id)->first();
        // echo $user_details->name;
-        $cart=Menuorder::where('order_no', '=', $order_id)->get()->toArray();
+        $cart=Menuorder::where('order_no', '=', $order_id)->get();
 
-        //print_r($cart);
-        foreach($cart as $k=>$arr){
+        print_r($cart);
+        /*foreach($cart as ){
             echo $k;
            // echo $arr;
             if($k=="menu_plan")
@@ -403,7 +403,7 @@ mail($to2,$subject2,$message,$headers);
                 }
                 echo $val;
             }
-        }
+        }*/
         $to='khairnar.abhi@gmail.com';
         $subject='cart';
         $message='cart body';
