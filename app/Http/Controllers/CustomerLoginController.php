@@ -480,13 +480,13 @@ foreach($cart as $k=>$arr){
 
         if($k=="menu_plan")
         {
-            if($arr==1){
+            if($arr=='1'){
                 $val="One day meal";
-            }else if($arr==5){
+            }else if($arr=='5'){
                 $val="One Week meal";
-            }else if($arr==15){
+            }else if($arr=='15'){
                 $val="Fifteen day meal";
-            }else if($arr==30){
+            }else if($arr=='30'){
                 $val="Thirty day meal";
             }
         $message.=" <tr>
