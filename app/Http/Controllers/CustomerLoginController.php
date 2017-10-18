@@ -641,7 +641,7 @@ foreach($cart2 as $cart){
 //echo $message;
 $to='aditya.kadam28@gmail.com';
 $to3='khairnar.abhi@gmail.com';
-$to2=$cartuser['email'];
+$to2=$user_details->email;
 $subject = "New order received - Chabaza";
 
 $subject2 = "Thankyou for ordering - Chabaza";
