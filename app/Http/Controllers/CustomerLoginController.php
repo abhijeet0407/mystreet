@@ -383,9 +383,12 @@ mail($to2,$subject2,$message,$headers);
         
         $user_id=$cart_first->customerId;
         $user_details=Customer::where('user_id','=',$user_id)->first();
-        echo $user_details->name;
+       // echo $user_details->name;
         $cart=Menuorder::where('order_no', '=', $order_id)->get();
-        print_r($cart);
+        //print_r($cart);
+        foreach($cart as $k=>$arr){
+            echo $arr;
+        }
 
     }
     function SuccessCart(Request $request){
@@ -418,6 +421,14 @@ mail($to2,$subject2,$message,$headers);
     if($order_status==="Success")
     {
 
+        $cart_first=Menuorder::select('customerId')->where('order_no', '=', $order_id)->first();
+
+        
+        $user_id=$cart_first->customerId;
+        $user_details=Customer::where('user_id','=',$user_id)->first();
+        //echo $user_details->name;
+        $cart=Menuorder::where('order_no', '=', $order_id)->get();
+
          $message = "
 
 <table width=\"100%\" border=\"1\" cellspacing=\"0\" cellpadding=\"5\" summary=\"Request Information\">
@@ -431,24 +442,24 @@ mail($to2,$subject2,$message,$headers);
 
   <tr>
     <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Name</th>
-    <td style=\"text-align:left;padding-left:10px;\">".$cartuser['name']."</td>
+    <td style=\"text-align:left;padding-left:10px;\">".$user_details->name."</td>
   </tr>
 
   
 
   <tr>
     <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Email</th>
-    <td style=\"text-align:left;padding-left:10px;\">".$cartuser['email']."</td>
+    <td style=\"text-align:left;padding-left:10px;\">".$user_details->email."</td>
   </tr>
 
     <tr>
     <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Mobile</th>
-    <td style=\"text-align:left;padding-left:10px;\">".$cartuser['mobile']."</td>
+    <td style=\"text-align:left;padding-left:10px;\">".$user_details->mobile."</td>
   </tr>
 
     <tr>
     <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Address</th>
-    <td style=\"text-align:left;padding-left:10px;\">".$cartuser['address']."</td>
+    <td style=\"text-align:left;padding-left:10px;\">".$user_details->address."</td>
   </tr>
 
 
