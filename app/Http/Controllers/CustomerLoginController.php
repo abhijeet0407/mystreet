@@ -380,7 +380,7 @@ mail($to2,$subject2,$message,$headers);
         $order_id='1710180216411041';
         $cart_first=Menuorder::select('customerId')->where('order_no', '=', $order_id)->limit(1);
 
-        echo $cart_first;
+        print_r($cart_first);
 
     }
     function SuccessCart(Request $request){
