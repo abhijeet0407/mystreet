@@ -388,7 +388,7 @@ mail($to2,$subject2,$message,$headers);
 
         print_r($cart2);
         foreach($cart2 as $cart){
-            echo $cart;
+            echo $cart->menu_plan;
            // echo $arr;
             /*if($k=="menu_plan")
             {
