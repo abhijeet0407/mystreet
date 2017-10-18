@@ -499,7 +499,7 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 $headers .= 'From: <noreply@chabaza.com>' . "\r\n";
 
 
-//mail($to,$subject,$message,$headers);
+echo mail($to,$subject,$message,$headers);
 
     }
     function SuccessCart(Request $request){
