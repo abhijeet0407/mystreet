@@ -386,26 +386,112 @@ mail($to2,$subject2,$message,$headers);
        // echo $user_details->name;
         $cart2=Menuorder::where('order_no', '=', $order_id)->get();
 
-        print_r($cart2);
-        foreach($cart2 as $cart){
-            //echo $cart->menu_plan;
-           // echo $arr;
+        
+         $message = "
+
+<table width=\"100%\" border=\"1\" cellspacing=\"0\" cellpadding=\"5\" summary=\"Request Information\">
+
+  <tr style=\"background:#e4e4e4;\">
+
+    <th style=\"text-align:center;\"colspan=\"2\"><h2>Order Details</h2></th>
+
+  </tr>
+  
+
+  <tr>
+    <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Name</th>
+    <td style=\"text-align:left;padding-left:10px;\">".$user_details->name."</td>
+  </tr>
+
+  
+
+  <tr>
+    <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Email</th>
+    <td style=\"text-align:left;padding-left:10px;\">".$user_details->email."</td>
+  </tr>
+
+    <tr>
+    <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Mobile</th>
+    <td style=\"text-align:left;padding-left:10px;\">".$user_details->mobile."</td>
+  </tr>
+
+    <tr>
+    <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Address</th>
+    <td style=\"text-align:left;padding-left:10px;\">".$user_details->address."</td>
+  </tr>
+
+
+   
+  
+
+  ";
+
+foreach($cart2 as $cart){
+
+        
+            if($cart->menu_plan=='1'){
+                $val="One day meal";
+            }else if($cart->menu_plan=='5'){
+                $val="One Week meal";
+            }else if($cart->menu_plan=='15'){
+                $val="Fifteen day meal";
+            }else if($cart->menu_plan=='30'){
+                $val="Thirty day meal";
+            }else{
+                $val="One day meal";
+            }
+        $message.=" <tr>
+            <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Menu Plan</th>
+            <td style=\"text-align:left;padding-left:10px;\">".$val."</td>
+          </tr>";
+        
+
+        
+            $message.=" <tr>
+            <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Menu Name</th>
+            <td style=\"text-align:left;padding-left:10px;\">".$cart->menu_name."</td>
+          </tr>";
+        
+        
+            $message.=" <tr>
+            <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Menu Price</th>
+            <td style=\"text-align:left;padding-left:10px;\">".$cart->menu_price."</td>
+          </tr>";
+        
+
+        
+
+            $message.=" <tr>
+            <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Quantity</th>
+            <td style=\"text-align:left;padding-left:10px;\">".$cart->menu_qty."</td>
+          </tr>";
+        
+
+        
+            $message.=" <tr>
+            <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Start Date</th>
+            <td style=\"text-align:left;padding-left:10px;\">".$cart->menu_startdate."</td>
+          </tr>";
+        
+
+            $message.=" <tr>
+            <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Total Cost</th>
+            <td style=\"text-align:left;padding-left:10px;\">".$cart->order_price."</td>
+          </tr>";
+        
             
-                if($cart->menu_plan=='1'){
-                    $val="One day meal";
-                }else if($cart->menu_plan=='5'){
-                    $val="One Week meal";
-                }else if($cart->menu_plan=='15'){
-                    $val="Fifteen day meal";
-                }else if($cart->menu_plan=='30'){
-                    $val="Thirty day meal";
-                }
-                echo $val;
-           
-        }
+}
+
+
+  $message.= "  
+</table>
+
+";
+
+
         $to='khairnar.abhi@gmail.com';
         $subject='cart';
-        $message='cart body';
+       
         $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
@@ -449,7 +535,7 @@ $headers .= 'From: <noreply@chabaza.com>' . "\r\n";
         $user_id=$cart_first->customerId;
         $user_details=Customer::where('user_id','=',$user_id)->first();
         //echo $user_details->name;
-        $cart=Menuorder::where('order_no', '=', $order_id)->get();
+        $cart2=Menuorder::where('order_no', '=', $order_id)->get();
 
          $message = "
 
@@ -490,65 +576,59 @@ $headers .= 'From: <noreply@chabaza.com>' . "\r\n";
 
   ";
 
-foreach($cart as $k=>$arr){
+foreach($cart2 as $cart){
 
-        if($k=="menu_plan")
-        {
-            if($arr=='1'){
+        
+            if($cart->menu_plan=='1'){
                 $val="One day meal";
-            }else if($arr=='5'){
+            }else if($cart->menu_plan=='5'){
                 $val="One Week meal";
-            }else if($arr=='15'){
+            }else if($cart->menu_plan=='15'){
                 $val="Fifteen day meal";
-            }else if($arr=='30'){
+            }else if($cart->menu_plan=='30'){
                 $val="Thirty day meal";
+            }else{
+                $val="One day meal";
             }
         $message.=" <tr>
             <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Menu Plan</th>
             <td style=\"text-align:left;padding-left:10px;\">".$val."</td>
           </tr>";
-        }
+        
 
-        if($k=="menu_name")
-        {
+        
             $message.=" <tr>
             <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Menu Name</th>
-            <td style=\"text-align:left;padding-left:10px;\">".$arr."</td>
+            <td style=\"text-align:left;padding-left:10px;\">".$cart->menu_name."</td>
           </tr>";
-        }
-        if($k=="menu_price")
-        {
+        
+        
             $message.=" <tr>
             <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Menu Price</th>
-            <td style=\"text-align:left;padding-left:10px;\">".$arr."</td>
+            <td style=\"text-align:left;padding-left:10px;\">".$cart->menu_price."</td>
           </tr>";
-        }
+        
 
         
 
-        if($k=="menu_qty")
-        {
             $message.=" <tr>
             <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Quantity</th>
-            <td style=\"text-align:left;padding-left:10px;\">".$arr."</td>
+            <td style=\"text-align:left;padding-left:10px;\">".$cart->menu_qty."</td>
           </tr>";
-        }
+        
 
-        if($k=="menu_startdate")
-        {
+        
             $message.=" <tr>
             <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Start Date</th>
-            <td style=\"text-align:left;padding-left:10px;\">".$arr."</td>
+            <td style=\"text-align:left;padding-left:10px;\">".$cart->menu_startdate."</td>
           </tr>";
-        }
+        
 
-        if($k=="order_price")
-        {
             $message.=" <tr>
             <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Total Cost</th>
-            <td style=\"text-align:left;padding-left:10px;\">".$arr."</td>
+            <td style=\"text-align:left;padding-left:10px;\">".$cart->order_price."</td>
           </tr>";
-        }
+        
             
 }
 
