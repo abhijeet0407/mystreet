@@ -383,7 +383,9 @@ mail($to2,$subject2,$message,$headers);
         
         $user_id=$cart_first->customerId;
         $user_details=Customer::where('user_id','=',$user_id)->first();
-        print_r($user_details);
+        echo $user_details->name;
+        $cart=Menuorder::select('customerId')->where('order_no', '=', $order_id)->get();
+        print_r($cart);
 
     }
     function SuccessCart(Request $request){
