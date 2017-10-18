@@ -29,3 +29,6 @@ Route::get('/cartprocess','CustomerLoginController@CartProcess');
 Route::post('/rsaurl','CustomerLoginController@RsaProcess');
 Route::post('/redirecturl','CustomerLoginController@SuccessCart');
 Route::post('/storeOrder','menuorderController@storeOrder');
+Route::get('/order_mailer','CustomerLoginController@order_mailer');
+
+

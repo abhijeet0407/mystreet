@@ -376,6 +376,13 @@ mail($to2,$subject2,$message,$headers);
 
 
     /**/
+    function order_mailer(){
+        $order_id='1710180216411041';
+        $cart_first=Menuorder::select('customerId')->where('order_no', '=', $order_id)->limit(1);
+
+        echo $cart_first;
+
+    }
     function SuccessCart(Request $request){
         $workingKey='A33EC01955E79CC8261D05573806F75A';     //Working Key should be provided here.
     $encResponse=$request["encResp"];         //This is the response sent by the CCAvenue Server
@@ -400,8 +407,136 @@ mail($to2,$subject2,$message,$headers);
             
         ]);
 
+        $cart=Menuorder::where('order_no', '=', $order_id);
+        $cart_first=Menuorder::select('customerId')->where('order_no', '=', $order_id)->limit(1);
+
     if($order_status==="Success")
     {
+
+         $message = "
+
+<table width=\"100%\" border=\"1\" cellspacing=\"0\" cellpadding=\"5\" summary=\"Request Information\">
+
+  <tr style=\"background:#e4e4e4;\">
+
+    <th style=\"text-align:center;\"colspan=\"2\"><h2>Order Details</h2></th>
+
+  </tr>
+  
+
+  <tr>
+    <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Name</th>
+    <td style=\"text-align:left;padding-left:10px;\">".$cartuser['name']."</td>
+  </tr>
+
+  
+
+  <tr>
+    <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Email</th>
+    <td style=\"text-align:left;padding-left:10px;\">".$cartuser['email']."</td>
+  </tr>
+
+    <tr>
+    <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Mobile</th>
+    <td style=\"text-align:left;padding-left:10px;\">".$cartuser['mobile']."</td>
+  </tr>
+
+    <tr>
+    <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Address</th>
+    <td style=\"text-align:left;padding-left:10px;\">".$cartuser['address']."</td>
+  </tr>
+
+
+   
+  
+
+  ";
+
+foreach($cart as $k=>$arr){
+
+        if($k=="menu_plan")
+        {
+            if($arr==1){
+                $val="One day meal";
+            }else if($arr==5){
+                $val="One Week meal";
+            }else if($arr==15){
+                $val="Fifteen day meal";
+            }else if($arr==30){
+                $val="Thirty day meal";
+            }
+        $message.=" <tr>
+            <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Menu Plan</th>
+            <td style=\"text-align:left;padding-left:10px;\">".$val."</td>
+          </tr>";
+        }
+
+        if($k=="menu_name")
+        {
+            $message.=" <tr>
+            <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Menu Name</th>
+            <td style=\"text-align:left;padding-left:10px;\">".$arr."</td>
+          </tr>";
+        }
+        if($k=="menu_price")
+        {
+            $message.=" <tr>
+            <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Menu Price</th>
+            <td style=\"text-align:left;padding-left:10px;\">".$arr."</td>
+          </tr>";
+        }
+
+        
+
+        if($k=="menu_qty")
+        {
+            $message.=" <tr>
+            <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Quantity</th>
+            <td style=\"text-align:left;padding-left:10px;\">".$arr."</td>
+          </tr>";
+        }
+
+        if($k=="menu_startdate")
+        {
+            $message.=" <tr>
+            <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Start Date</th>
+            <td style=\"text-align:left;padding-left:10px;\">".$arr."</td>
+          </tr>";
+        }
+
+        if($k=="order_price")
+        {
+            $message.=" <tr>
+            <th style=\"text-align:left;padding-left:10px;\" width=\"25%\" scope=\"row\">Total Cost</th>
+            <td style=\"text-align:left;padding-left:10px;\">".$arr."</td>
+          </tr>";
+        }
+            
+}
+
+
+  $message.= "  
+</table>
+
+";
+
+//echo $message;
+$to='aditya.kadam28@gmail.com';
+$to2=$cartuser['email'];
+$subject = "New order received - Chabaza";
+
+$subject2 = "Thankyou for ordering - Chabaza";
+// Always set content-type when sending HTML email
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// More headers
+$headers .= 'From: <noreply@digitaldecode.us>' . "\r\n";
+
+
+mail($to,$subject,$message,$headers);
+
+mail($to2,$subject2,$message,$headers);
 
 
         echo "<br>Thank you for shopping with us. Your credit card has been charged and your transaction is successful. We will be shipping your order to you soon.";
