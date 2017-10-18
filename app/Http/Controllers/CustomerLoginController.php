@@ -384,7 +384,7 @@ mail($to2,$subject2,$message,$headers);
         $user_id=$cart_first->customerId;
         $user_details=Customer::where('user_id','=',$user_id)->first();
        // echo $user_details->name;
-        $cart=Menuorder::where('order_no', '=', $order_id)->get();
+        $cart=Menuorder::where('order_no', '=', $order_id)->toArray();
 
         //print_r($cart);
         foreach($cart as $k=>$arr){
