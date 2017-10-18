@@ -385,6 +385,19 @@ mail($to2,$subject2,$message,$headers);
         $user_details=Customer::where('user_id','=',$user_id)->first();
        // echo $user_details->name;
         $cart=Menuorder::where('order_no', '=', $order_id)->get();
+        if($k=="menu_plan")
+        {
+            if($arr=='1'){
+                $val="One day meal";
+            }else if($arr=='5'){
+                $val="One Week meal";
+            }else if($arr=='15'){
+                $val="Fifteen day meal";
+            }else if($arr=='30'){
+                $val="Thirty day meal";
+            }
+            echo $val;
+        }
         //print_r($cart);
         foreach($cart as $k=>$arr){
             echo $arr;
