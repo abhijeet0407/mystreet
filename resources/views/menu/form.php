@@ -93,7 +93,7 @@
                                  <input type="hidden" name="prev_image" class="image_val" value="<?php echo (isset($menu))?old('location',$menu->image):old('image') ?>">
                            
                                   <a href="javascript:void(0)" class="btn btn-xs delete_image btn-danger">X</a>
-                                  <img src="<?php echo  asset('storage/menus/'.$menu->image); ?>" />
+                                  <img src="<?php echo  asset('storage/app/public/menus/'.$menu->image); ?>" />
                                 </div>
                                 <?php } } ?>
                             </div>
