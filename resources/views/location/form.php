@@ -44,7 +44,7 @@
                                  <input type="hidden" name="prev_location_image" class="image_val" value="<?php echo (isset($location))?old('location',$location->location_image):old('location_image') ?>">
                            
                                   <a href="javascript:void(0)" class="btn btn-xs delete_image btn-danger">X</a>
-                                  <img src="<?php echo  asset('storage/app/public/locations/'.$location->location_image); ?>" />
+                                  <img src="<?php echo '/app/storage/app/public/locations/'.$location->location_image; ?>" />
                                 </div>
                                 <?php } } ?>
                             </div>
