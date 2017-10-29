@@ -74,7 +74,7 @@ class AddressController extends Controller
     }
 
     public function checkAddress(Request $request){
-    	$datas = Address::select('id','label')->where('user_id','=',$request['user_id'])->orderBy('id','DESC')->paginate(200);
+    	$datas = Address::where('user_id','=',$request['user_id'])->orderBy('id','DESC')->paginate(200);
     	$data= $datas->toArray()['data'];
     	if(count($data)>0){
     	return json_encode(array('data' => $data,'status' => 'success'));
