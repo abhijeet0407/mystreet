@@ -77,9 +77,9 @@ class AddressController extends Controller
     	$datas = Address::where('user_id','=',$request['user_id'])->orderBy('id','DESC')->paginate(200);
     	$data= $datas->toArray()['data'];
     	if(count($data)>0){
-    	return json_encode(array('data' => $data,'status' => 'success'));
+    	return json_encode(array(array('data' => $data,'status' => 'success')));
     	}else{
-    		return json_encode(array('status' => 'fail'));
+    		return json_encode(array(array('status' => 'fail')));
     	}
     	
     }
