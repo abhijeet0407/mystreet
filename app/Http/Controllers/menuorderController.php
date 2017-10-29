@@ -126,6 +126,7 @@ class menuorderController extends Controller
             'order_price' => $order->order_price,
             'customerId' => $order->customerId,
             'order_no' => $order->order_no,
+            'address_id' => $order->address_id,
             'transaction_no' => '',
             'order_status' => ''
             
