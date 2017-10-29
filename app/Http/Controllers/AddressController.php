@@ -64,7 +64,7 @@ class AddressController extends Controller
 
     	 ]);
 
-    	 $AddressId = $Customer->id;
+    	 $AddressId = $Address->id;
     	 if($AddressId!=''){
             return 'success@#@'.$AddressId;
         }else{
