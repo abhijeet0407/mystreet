@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Address;
 use App\User;
+use Illuminate\Support\Facades\Validator;
 class AddressController extends Controller
 {
     //
@@ -33,9 +34,26 @@ class AddressController extends Controller
 
     public function storeAddress(Request $request)
     {
-    	$orderdata = json_decode($request['orderdata']);
-    	 $Customer= Address::create([
-    	 	'user_id' => $request['user_id'],
+    	$validator = Validator::make($request->all(), [
+             'user_id' => 'required|max:255',
+             'label' => 'required|max:255',
+             'flat_no' => 'required|max:255',
+             'street_address' => 'required|max:255',
+             'city' => 'required|max:255',
+             'zip_code' => 'required|max:255',
+             'landmark' => 'required|max:255',
+            
+            
+            
+        ]);
+
+
+
+        if ($validator->fails()) {
+            return implode(', ',$validator->errors()->all());
+        }	
+    	 $Address= Address::create([
+    	 	'user_id' => (int)$request['user_id'],
             'label' => $request['label'],
             'flat_no' => $request['flat_no'],
             'street_address' => $request['street_address'],
@@ -45,6 +63,13 @@ class AddressController extends Controller
            
 
     	 ]);
+
+    	 $AddressId = $Customer->id;
+    	 if($AddressId!=''){
+            return 'success@#@'.$AddressId;
+        }else{
+            return 'error';
+        }
 
     }
 }
