@@ -30,5 +30,6 @@ Route::post('/rsaurl','CustomerLoginController@RsaProcess');
 Route::post('/redirecturl','CustomerLoginController@SuccessCart');
 Route::post('/storeOrder','menuorderController@storeOrder');
 Route::get('/order_mailer','CustomerLoginController@order_mailer');
+Route::post('/storeAddress','AddressController@storeAddress');
 
 

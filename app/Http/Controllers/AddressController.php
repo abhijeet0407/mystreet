@@ -30,4 +30,21 @@ class AddressController extends Controller
 
         return view('address.home',compact('datas'));
     }
+
+    public function storeAddress(Request $request)
+    {
+    	$orderdata = json_decode($request['orderdata']);
+    	 $Customer= Address::create([
+    	 	'user_id' => $request['user_id'],
+            'label' => $request['label'],
+            'flat_no' => $request['flat_no'],
+            'street_address' => $request['street_address'],
+            'city' => $request['city'],
+            'zip_code' => $request['zip_code'],
+            'landmark' => $request['landmark']
+           
+
+    	 ]);
+
+    }
 }
