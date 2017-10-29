@@ -31,5 +31,6 @@ Route::post('/redirecturl','CustomerLoginController@SuccessCart');
 Route::post('/storeOrder','menuorderController@storeOrder');
 Route::get('/order_mailer','CustomerLoginController@order_mailer');
 Route::post('/storeAddress','AddressController@storeAddress');
+Route::post('/checkAddress','AddressController@checkAddress');
 
 
