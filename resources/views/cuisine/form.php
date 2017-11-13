@@ -21,7 +21,7 @@
 
                   
                    ?>
-                  <form class="form-horizontal" role="form" method="POST" action="<?php echo url('/cuisine/'.$cuisine->id) ?>"> 
+                  <form class="form-horizontal" role="form" method="POST"  enctype="multipart/form-data" action="<?php echo url('/cuisine/'.$cuisine->id) ?>"> 
                     <input type="hidden" name="_method" value="PATCH">
                   <?php  } ?>      
                         <?php echo csrf_field() ?>
