@@ -130,7 +130,7 @@ class CuisineController extends Controller
             $cuisine->cuisine_image=$request['prev_cuisine_image'];
         }
         $cuisine->cuisine = $request['cuisine'];
-        //print_r($request->file('cuisine_image'));
+
         $cuisine->save();
        // return redirect('cuisine');
     }
