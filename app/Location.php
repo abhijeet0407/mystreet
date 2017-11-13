@@ -11,7 +11,7 @@ class Location extends Model
      use SoftDeletes;
 
      use SearchableTrait;
-
+     
 
      protected $searchable = [
         /**

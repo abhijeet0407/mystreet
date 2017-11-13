@@ -11,6 +11,10 @@ class Cuisine extends Model
     use SoftDeletes;
     use SearchableTrait;
 
+    protected $fillable = [
+        'cuisine', 'cuisine_image'
+    ];
+
     protected $searchable = [
         /**
          * Columns and their priority in search results.

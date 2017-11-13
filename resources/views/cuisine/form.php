@@ -33,6 +33,23 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group fg-float">
+                        <label class="">Location Image*</label>
+                            <div class="">
+                            <input type="file" name="location_image" />
+
+                                <?php if(isset($location)){ if($location->location_image != ""){ ?>
+                                <div class="col-md-6 m-t-15 image_container">
+                                 <input type="hidden" name="prev_cuisine_image" class="image_val" value="<?php echo (isset($cuisine))?old('cuisine',$cuisine->cuisine_image):old('cuisine_image') ?>">
+                           
+                                  <a href="javascript:void(0)" class="btn btn-xs delete_image btn-danger">X</a>
+                                  <img src="<?php echo '/app/storage/app/public/cuisines/'.$cuisine->cuisine_image; ?>" />
+                                </div>
+                                <?php } } ?>
+                            </div>
+                        </div>
+
                         
 
                         <button type="submit" class="btn btn-primary btn-sm m-t-10 waves-effect">Submit</button>

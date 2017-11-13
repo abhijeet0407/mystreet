@@ -72,6 +72,12 @@ class CuisineController extends Controller
     public function store(Request $request)
     {
         //
+        $file_name='';
+        if($request->file('cuisine_image')!==null){
+        $ext=$request->file('cuisine_image')->guessClientExtension();
+        $file_name=rand(1111,9999).'cuisine.'.$ext;
+        $request->file('cuisine_image')->storeAs('public/cuisines/',$file_name);
+         }
         $cuisine=new Cuisine;
         $cuisine->cuisine=$request['cuisine'];
         $cuisine->save();
@@ -114,7 +120,15 @@ class CuisineController extends Controller
     {
         //
         $cuisine = Cuisine::find($id);
+        if($request->file('cuisine_image')!== null){
 
+        $ext=$request->file('cuisine_image')->guessClientExtension();
+        $file_name=rand(1111,9999).'cuisine.'.$ext;
+        $request->file('cuisine_image')->storeAs('public/cuisines/',$file_name);
+        $cuisine->cuisine_image=$file_name;
+        }else{
+            $cuisine->cuisine_image=$request['prev_cuisine_image'];
+        }
         $cuisine->cuisine = $request['cuisine'];
 
         $cuisine->save();
