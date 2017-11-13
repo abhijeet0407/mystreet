@@ -120,6 +120,7 @@ class CuisineController extends Controller
     {
         //
         $cuisine = Cuisine::find($id);
+        print_r($request->file('cuisine_image'));
         if($request->file('cuisine_image')!== null){
 
         $ext=$request->file('cuisine_image')->guessClientExtension();
