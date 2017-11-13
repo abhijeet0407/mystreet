@@ -35,11 +35,11 @@
 
 
                         <div class="form-group fg-float">
-                        <label class="">Location Image*</label>
+                        <label class="">Cuisine Image*</label>
                             <div class="">
-                            <input type="file" name="location_image" />
+                            <input type="file" name="cuisine_image" />
 
-                                <?php if(isset($location)){ if($location->location_image != ""){ ?>
+                                <?php if(isset($cuisine)){ if($cuisine->cuisine_image != ""){ ?>
                                 <div class="col-md-6 m-t-15 image_container">
                                  <input type="hidden" name="prev_cuisine_image" class="image_val" value="<?php echo (isset($cuisine))?old('cuisine',$cuisine->cuisine_image):old('cuisine_image') ?>">
                            
