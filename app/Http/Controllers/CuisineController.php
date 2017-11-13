@@ -133,7 +133,7 @@ class CuisineController extends Controller
         $cuisine->cuisine = $request['cuisine'];
 
         $cuisine->save();
-        return redirect('cuisine');
+        //return redirect('cuisine');
     }
 
     /**
