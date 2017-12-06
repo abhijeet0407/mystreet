@@ -47,7 +47,7 @@ class CuisineController extends Controller
         'last_page'    => $datas->lastPage(),
         'from'         => $datas->firstItem(),
         'to'           => $datas->lastItem(),
-        'absurl'       => "http://chabaza.com/app/public/storage/cuisines/" 
+        'absurl'       => "http://chabaza.com/app/storage/app/public/cuisines/" 
     ))));     
 
     }
