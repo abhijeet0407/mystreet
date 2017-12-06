@@ -36,7 +36,7 @@ class CuisineController extends Controller
     }
 
     public function ApiCuisineList(){
-         $datas = Cuisine::select('id','cuisine')->where('cuisine','!=','')->orderBy('cuisine','ASC')->paginate(200);
+         $datas = Cuisine::select('id','cuisine','cuisine_image')->where('cuisine','!=','')->orderBy('cuisine','ASC')->paginate(200);
     
     $data= $datas->toArray()['data'];
         //return $data;
